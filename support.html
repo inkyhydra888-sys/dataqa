@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Support — DataQA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f4f8;--white:#ffffff;--navy:#0d1f3c;--navy2:#1a3355;--teal:#1a6e6e;
+  --ok:#00c853;--ok-light:#e8faf0;
+  --text:#1a2740;--text2:#4a5568;--text3:#8896ab;
+  --border:#dde3ec;--sans:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7}
+a{color:var(--teal)}
+header{background:var(--white);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;gap:12px}
+.logo{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-mark{width:28px;height:28px;background:var(--navy);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:13px}
+.back{margin-left:auto;font-size:13px;font-weight:600;color:var(--text3);text-decoration:none;font-family:var(--mono)}
+.back:hover{color:var(--navy)}
+.wrap{max-width:720px;margin:60px auto;padding:0 28px 80px}
+.page-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+h1{font-size:36px;font-weight:800;color:var(--navy);letter-spacing:-1px;margin-bottom:8px}
+.sub{font-size:16px;color:var(--text2);margin-bottom:48px;line-height:1.6}
+
+/* Contact card */
+.contact-card{
+  background:var(--navy);border-radius:16px;padding:40px;text-align:center;margin-bottom:32px;
+  position:relative;overflow:hidden;
+}
+.contact-card::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.contact-card-inner{position:relative;z-index:1}
+.contact-icon{font-size:48px;margin-bottom:16px;display:block}
+.contact-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px}
+.contact-sub{font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.6}
+.contact-email-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;color:var(--navy);
+  padding:14px 28px;border-radius:8px;
+  font-size:14px;font-weight:800;text-decoration:none;
+  transition:all 0.18s;
+}
+.contact-email-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.25);color:var(--navy)}
+.contact-response{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.35);margin-top:16px}
+
+/* FAQ */
+.faq-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+.faq-title{font-size:24px;font-weight:800;color:var(--navy);margin-bottom:28px;letter-spacing:-0.5px}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:12px;cursor:pointer;transition:all 0.2s}
+.faq-item:hover{border-color:#c8d2e0;box-shadow:0 2px 12px rgba(13,31,60,0.06)}
+.faq-item.open{border-color:rgba(26,110,110,0.3)}
+.faq-q{font-size:15px;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+.faq-arrow{font-size:12px;color:var(--text3);transition:transform 0.2s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{font-size:14px;color:var(--text2);line-height:1.65;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:none}
+.faq-item.open .faq-a{display:block}
+
+footer{text-align:center;padding:32px;font-family:var(--mono);font-size:11px;color:var(--text3);border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">◈</div>
+    DataQA
+  </a>
+  <a href="index.html" class="back">← Back to home</a>
+</header>
+
+<div class="wrap">
+  <div class="page-label">// support</div>
+  <h1>How can we help?</h1>
+  <p class="sub">DataQA is a small, independent product. Every support email goes directly to a real person. We read and respond to everything.</p>
+
+  <!-- Contact card -->
+  <div class="contact-card">
+    <div class="contact-card-inner">
+      <span class="contact-icon">✉️</span>
+      <div class="contact-title">Email Support</div>
+      <div class="contact-sub">Got a question, a bug report, or feedback on the product?<br>Drop us an email and we'll get back to you.</div>
+      <a href="mailto:dataqa.app@protonmail.com" class="contact-email-btn">
+        dataqa.app@protonmail.com →
+      </a>
+      <div class="contact-response">We aim to respond within 1–2 business days</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-label">// faq</div>
+  <div class="faq-title">Common questions</div>
+
+  <div class="faq-item" onclick="toggle(this)">
+    <div class="faq-q">What file types does DataQA support? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">Currently DataQA supports CSV and Excel (.xlsx, .xls) files on paid plans, and CSV only on the free tier. PDF and Word document support is coming in a future update.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggle(this)">
+    <div class="faq-q">Is my data safe when I upload it? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">Yes. Your files are processed in your browser session and are not stored permanently on our servers. We never use your data to train models or share it with third parties. Always keep a copy of your original files as a precaution.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggle(this)">
+    <div class="faq-q">What does the free tier include? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">The free tier lets you upload CSV files up to 2,000 rows and run up to 3 QA scans per day. You'll see a popup confirming issues exist, but the full score breakdown, issue list, and export are available on paid plans.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggle(this)">
+    <div class="faq-q">What are output templates? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">Output templates let you define a specific column structure for your exports. Upload a blank CSV with one example row showing the exact format you need — DataQA will map your cleaned data to that structure when you export. Perfect for agencies who need to deliver data in a client's specific format every time.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggle(this)">
+    <div class="faq-q">What are custom QA rules? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">Custom rules let you define your own quality standards on top of DataQA's built-in checks. You can mark specific columns as required, enforce a regex format (e.g. email addresses, phone numbers, postcodes), or set maximum character lengths. Your rules are saved and applied automatically every time you run a QA scan.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggle(this)">
+    <div class="faq-q">How does the AI auto-fix work? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">When you click Auto-Fix, DataQA sends your data and the list of detected issues to an AI model. The AI analyses each issue in the context of your specific data — not just pattern matching — and returns a set of corrections. Every change is highlighted in green before you approve anything, and you can undo any fix you disagree with.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggle(this)">
+    <div class="faq-q">I found a bug. How do I report it? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">Email us at <a href="mailto:dataqa.app@protonmail.com">dataqa.app@protonmail.com</a> with a description of what happened and what you expected to happen. If you can include the file type and approximate number of rows, that helps a lot. We take every bug report seriously.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggle(this)">
+    <div class="faq-q">When is DataQA launching? <span class="faq-arrow">▼</span></div>
+    <div class="faq-a">We're currently in pre-launch. Join the waitlist on the homepage and you'll be the first to know — plus you'll lock in founder pricing before it goes public.</div>
+  </div>
+
+</div>
+
+<footer>© 2026 DataQA · <a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></footer>
+
+<script>
+function toggle(el){
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
