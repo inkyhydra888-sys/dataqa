@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DataQA Roadmap — What's Coming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f4f8;--bg2:#e8edf3;--white:#fff;
+  --navy:#0d1f3c;--navy2:#1a3355;
+  --teal:#1a6e6e;--teal-light:#e8f5f5;
+  --accent:#00b8d4;--accent-dark:#0097b2;
+  --green:#00c853;--green-light:#e8faf0;
+  --yellow:#f59e0b;--yellow-light:#fff8f0;
+  --text:#1a2740;--text2:#4a5568;--text3:#8896ab;
+  --border:#dde3ec;--border2:#c8d2e0;
+  --shadow:0 2px 8px rgba(13,31,60,0.08);
+  --shadow-lg:0 8px 32px rgba(13,31,60,0.13);
+  --r:8px;--r-lg:16px;--r-xl:24px;
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Plus Jakarta Sans',sans-serif;
+}
+html,body{min-height:100%;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6}
+a{color:var(--accent-dark);text-decoration:none}
+.container{max-width:900px;margin:0 auto;padding:0 28px}
+
+.beta-banner{background:var(--navy);display:flex;align-items:center;justify-content:center;gap:16px;padding:9px 20px;position:relative;z-index:300;flex-wrap:wrap}
+
+header{position:sticky;top:0;left:0;right:0;z-index:200;background:rgba(240,244,248,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;gap:32px;padding:14px 28px;max-width:1140px;margin:0 auto}
+.nav-links{display:flex;gap:28px;margin-left:auto;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text2);transition:color 0.15s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{font-weight:700;color:var(--navy)}
+.nav-cta{font-size:13px;font-weight:700;padding:9px 20px;background:var(--navy);color:#fff!important;border-radius:var(--r);transition:all 0.15s}
+.nav-cta:hover{background:var(--navy2)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:100px;font-family:var(--mono)}
+.chip-teal{background:var(--teal-light);color:var(--teal);border:1px solid rgba(26,110,110,0.2)}
+.chip-green{background:var(--green-light);color:#00803a;border:1px solid rgba(0,200,83,0.25)}
+
+.page-hero{padding:72px 0 56px;background:linear-gradient(160deg,#fff 0%,#eef3f8 50%,#e0ebf5 100%);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(13,31,60,0.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.hero-eyebrow-line{width:32px;height:2px;background:var(--teal);border-radius:2px}
+.page-hero h1{font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-1.2px;color:var(--navy);margin-bottom:16px}
+.page-hero h1 em{font-style:normal;color:var(--teal)}
+.page-hero p{font-size:16px;color:var(--text2);line-height:1.7;max-width:560px}
+.legend{display:flex;gap:20px;flex-wrap:wrap;margin:36px 0 0}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text2)}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+.here-card{margin-top:24px;display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,rgba(0,200,83,0.1),rgba(26,110,110,0.08));border:1px solid rgba(0,200,83,0.3);border-radius:var(--r-lg);padding:16px 20px;box-shadow:var(--shadow)}
+.here-pulse{width:40px;height:40px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;animation:pulse-beta 2.2s ease-in-out infinite}
+.here-text{flex:1;min-width:0}
+.here-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00803a;margin-bottom:3px}
+.here-title{font-size:14px;font-weight:600;color:var(--navy);line-height:1.4}
+.here-title strong{color:var(--accent-dark)}
+.here-link{font-size:13px;font-weight:700;color:var(--accent-dark);white-space:nowrap;padding:8px 16px;border:1px solid rgba(0,184,212,0.35);border-radius:var(--r);transition:all 0.15s;flex-shrink:0}
+.here-link:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.current-phase{border-width:2px!important;box-shadow:0 0 0 4px rgba(0,200,83,0.12),var(--shadow-lg)!important;position:relative}
+.current-ribbon{position:absolute;top:-13px;left:24px;color:#fff;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:100px;box-shadow:0 2px 6px rgba(0,200,83,0.4);background:var(--green)}
+
+.next-phase{position:relative}
+.next-ribbon{position:absolute;top:-13px;left:24px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:100px;box-shadow:0 2px 6px rgba(0,184,212,0.4)}
+
+.phase-toggle{display:flex;align-items:center;gap:8px;width:100%;text-align:left;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);cursor:pointer;transition:all 0.15s;margin-top:6px}
+.phase-toggle:hover{background:var(--teal-light);color:var(--teal);border-color:rgba(26,110,110,0.25)}
+.phase-toggle .chevron{margin-left:auto;transition:transform 0.2s;font-size:14px}
+.phase-toggle.open .chevron{transform:rotate(180deg)}
+.phase-collapsible{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows 0.3s ease}
+.phase-collapsible.open{grid-template-rows:1fr}
+.phase-collapsible-inner{min-height:0;overflow:hidden}
+
+.timeline{padding:48px 0 72px;position:relative}
+.tl-spine{position:absolute;left:23px;transform:none;top:8px;bottom:8px;width:2px;background:var(--border2);z-index:0}
+
+.tl-row{display:grid;grid-template-columns:48px 1fr;gap:0 24px;position:relative;z-index:1;margin-bottom:32px}
+.tl-row:last-child{margin-bottom:0}
+.tl-node{display:flex;flex-direction:column;align-items:center;z-index:2}
+.tl-badge{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;border:3px solid var(--white);background:var(--white);position:relative;z-index:3;flex-shrink:0}
+.tl-line{display:none}
+
+.phase-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-xl);padding:28px 30px;box-shadow:var(--shadow);transition:box-shadow 0.2s}
+.phase-card:hover{box-shadow:var(--shadow-lg)}
+.phase-title{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-0.3px}
+.phase-date{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.phase-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+
+.fl{list-style:none;display:flex;flex-direction:column;gap:7px}
+.fl li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);line-height:1.5;padding:8px 12px;border-radius:var(--r);background:var(--bg);border:1px solid var(--border)}
+.fi{font-size:15px;flex-shrink:0}
+.fl li strong{color:var(--navy);font-weight:700;display:block;font-size:13px}
+.fl li span{font-size:12px;color:var(--text3);line-height:1.4}
+.stag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap;margin-left:auto;flex-shrink:0;align-self:center}
+.tag-done{background:#e8faf0;color:#00803a;border:1px solid rgba(0,200,83,0.25)}
+.tag-active{background:rgba(0,184,212,0.1);color:var(--accent-dark);border:1px solid rgba(0,184,212,0.3)}
+.tag-planned{background:var(--yellow-light);color:#b45309;border:1px solid rgba(245,158,11,0.3)}
+.tag-paused{background:#fef2f2;color:#b91c1c;border:1px solid rgba(239,68,68,0.25)}
+
+.sub-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin:14px 0 7px}
+
+.waitlist-band{background:var(--navy);padding:56px 28px;text-align:center}
+.waitlist-band h2{font-size:26px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-0.4px}
+.waitlist-band p{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px}
+.wl-row{display:flex;gap:8px;max-width:440px;margin:0 auto}
+.wl-input{flex:1;padding:12px 16px;border:1px solid rgba(255,255,255,0.15);border-radius:var(--r);font-family:var(--sans);font-size:14px;color:#fff;background:rgba(255,255,255,0.08);outline:none;transition:border-color 0.15s}
+.wl-input::placeholder{color:rgba(255,255,255,0.35)}
+.wl-input:focus{border-color:var(--accent)}
+.wl-btn{padding:12px 22px;border-radius:var(--r);border:none;background:var(--teal);color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.15s}
+.wl-btn:hover{background:#155a5a}
+.wl-success{display:none;color:var(--green);font-size:13px;font-weight:600;margin-top:12px}
+
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.08);padding:36px 28px}
+.footer-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.45);transition:color 0.15s;font-family:var(--mono)}
+.footer-links a:hover{color:rgba(255,255,255,0.85)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.35);font-family:var(--mono)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp 0.55s ease both}
+@keyframes pulse-beta{0%,100%{box-shadow:0 0 0 3px rgba(0,184,212,0.35),0 2px 8px rgba(13,31,60,0.08)}50%{box-shadow:0 0 0 7px rgba(0,184,212,0.12),0 2px 8px rgba(13,31,60,0.08)}}
+
+@media(max-width:680px){
+  .tl-spine{left:19px}
+  .tl-row{grid-template-columns:40px 1fr;gap:0 16px;margin-bottom:24px}
+  .tl-badge{width:40px;height:40px;font-size:17px}
+  .phase-card{padding:20px 18px}
+  .nav-links{display:none}
+  .wl-row{flex-direction:column}
+  .legend{gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- BANNER -->
+<div class="beta-banner">
+  <span style="font-size:13px;font-weight:700;color:#fff">&#x1F680; Open Beta launches <span style="color:#00d4f5">31 July 2026</span> &mdash; free, no invite needed</span>
+  <a href="open-beta-coming-soon.html" style="background:rgba(0,184,212,0.2);border:1px solid rgba(0,184,212,0.5);color:#00d4f5;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:100px;text-decoration:none;white-space:nowrap">Learn More &rarr;</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <nav class="nav">
+    <a href="index.html" style="display:flex;align-items:center;text-decoration:none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none" style="height:38px;width:auto">
+        <defs><linearGradient id="mg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a6e6e"/><stop offset="100%" stop-color="#0d1f3c"/></linearGradient></defs>
+        <rect x="0" y="4" width="56" height="56" rx="12" fill="url(#mg2)"/>
+        <path d="M28 13 L46 28 L28 43 L10 28 Z" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none"/>
+        <path d="M28 19 L40 28 L28 37 L16 28 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+        <path d="M20.5 28 L25.5 34 L36.5 21" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="28" cy="13" r="1.8" fill="rgba(255,255,255,0.55)"/><circle cx="46" cy="28" r="1.8" fill="rgba(255,255,255,0.55)"/>
+        <circle cx="28" cy="43" r="1.8" fill="rgba(255,255,255,0.55)"/><circle cx="10" cy="28" r="1.8" fill="rgba(255,255,255,0.55)"/>
+        <text x="68" y="33" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="800" fill="#0d1f3c" letter-spacing="-0.5">Data</text>
+        <text x="131" y="33" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="800" fill="#1a6e6e" letter-spacing="-0.5">QA</text>
+        <text x="69" y="46" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" font-weight="500" fill="#8896ab" letter-spacing="2">DATA QUALITY · SIMPLIFIED</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#features">Features</a>
+      <a href="roadmap.html" class="active">Roadmap</a>
+      <a href="index.html#waitlist" class="nav-cta">Join Waitlist →</a>
+      <a href="open-beta-coming-soon.html" class="nav-cta" style="background:var(--teal);margin-left:4px">Open Beta →</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow fade-up">
+      <div class="hero-eyebrow-line"></div>
+      <span class="chip chip-teal">Product Roadmap</span>
+    </div>
+    <h1 class="fade-up" style="animation-delay:0.07s">Where DataQA is <em>headed</em>.</h1>
+    <p class="fade-up" style="animation-delay:0.13s">Three phases, one goal — a data quality tool that works for everyone. Here's exactly what's live, what's launching, and what's coming next.</p>
+    <div class="legend fade-up" style="animation-delay:0.18s">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Closed Beta — complete</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Open Beta — 31 July 2026</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div>Full Launch — Phase 2</div>
+    </div>
+    <div class="here-card fade-up" style="animation-delay:0.24s">
+      <div class="here-pulse">📍</div>
+      <div class="here-text">
+        <div class="here-label">We are here</div>
+        <div class="here-title">Closed Beta is complete — next up is <strong>Open Beta</strong>, opening to everyone on 31 July 2026</div>
+      </div>
+      <a href="#phase-open-beta" class="here-link">What's next →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<div class="timeline">
+  <div class="tl-spine"></div>
+  <div class="container">
+
+    <!-- ── PHASE 1: CLOSED BETA ── -->
+    <div class="tl-row">
+      <div class="tl-node">
+        <div class="tl-badge" style="background:#e8faf0;box-shadow:0 0 0 3px rgba(0,200,83,0.3),0 2px 8px rgba(13,31,60,0.08)">✅</div>
+      </div>
+      <div>
+        <div class="phase-card current-phase" id="phase-closed-beta" style="border-left:4px solid var(--green)">
+          <div class="current-ribbon" style="background:var(--green)">📍 We are here</div>
+          <div class="phase-header">
+            <div><div class="phase-title">Closed Beta</div><div class="phase-date">Now complete</div></div>
+            <span class="chip chip-green" style="font-size:9px">&#10003;&nbsp;Done</span>
+          </div>
+          <ul class="fl">
+            <li><span class="fi">📁</span><div><strong>CSV &amp; Excel upload</strong><span>Drag, drop, done — entirely in your browser</span></div><span class="stag tag-done">Live</span></li>
+            <li><span class="fi">🎯</span><div><strong>A–F quality grade</strong><span>Full breakdown with score by issue type</span></div><span class="stag tag-done">Live</span></li>
+            <li><span class="fi">🔍</span><div><strong>15 QA checks</strong><span>Blanks, spelling, dates, duplicates &amp; more</span></div><span class="stag tag-done">Live</span></li>
+            <li><span class="fi">🔧</span><div><strong>Auto-fix</strong><span>Case, format, whitespace, punctuation</span></div><span class="stag tag-done">Live</span></li>
+            <li><span class="fi">🔗</span><div><strong>Shareable report links</strong><span>No login required to view</span></div><span class="stag tag-done">Live</span></li>
+            <li><span class="fi">📤</span><div><strong>Export clean file</strong><span>Download clean rows or flagged rows only</span></div><span class="stag tag-done">Live</span></li>
+            <li><span class="fi">🇿🇦</span><div><strong>English &amp; Afrikaans spell check</strong><span>SA supplement dictionary included</span></div><span class="stag tag-done">Live</span></li>
+            <li><span class="fi">🔒</span><div><strong>100% local processing</strong><span>Your data never leaves your device</span></div><span class="stag tag-done">Live</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 2: OPEN BETA ── -->
+    <div class="tl-row">
+      <div class="tl-node">
+        <div class="tl-badge" style="background:rgba(0,184,212,0.1);animation:pulse-beta 2.2s ease-in-out infinite">🚀</div>
+      </div>
+      <div>
+        <div class="phase-card next-phase" id="phase-open-beta" style="border-left:4px solid var(--accent)">
+          <div class="next-ribbon">⏭️ Next up</div>
+          <div class="phase-header">
+            <div><div class="phase-title">Open Beta</div><div class="phase-date">31 July 2026</div></div>
+            <span class="chip" style="background:rgba(0,184,212,0.1);color:var(--accent-dark);border:1px solid rgba(0,184,212,0.3);font-size:9px">&#128336;&nbsp;Coming Soon</span>
+          </div>
+          <div style="background:rgba(0,184,212,0.06);border:1px solid rgba(0,184,212,0.2);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--text2);line-height:1.6">
+            <strong style="color:var(--navy);display:block;margin-bottom:3px">Free for everyone — no invite code needed.</strong>
+            All 15 QA checks carry forward. Open Beta has upload and row caps that lift completely at full launch.
+          </div>
+          <ul class="fl">
+            <li><span class="fi">🌐</span><div><strong>Own domain</strong><span>DataQA moves to its permanent home — no more Vercel subdomain</span></div><span class="stag tag-active">New</span></li>
+            <li><span class="fi">📦</span><div><strong>All Closed Beta features</strong><span>Everything from Phase 1, carried forward unchanged</span></div><span class="stag tag-active">Carried</span></li>
+            <li><span class="fi">⚠️</span><div><strong>5 uploads/day · 2 500 rows · 50 cols · 10 MB</strong><span>Beta limits — all removed at full launch</span></div><span class="stag" style="background:#fff8f0;color:#b45309;border:1px solid rgba(245,158,11,0.3)">Beta cap</span></li>
+            <li><span class="fi">🤖</span><div><strong>AI features not in Open Beta</strong><span>AI assistant &amp; smart rules return at full launch</span></div><span class="stag tag-paused">Paused</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PHASE 3: FULL LAUNCH ── -->
+    <div class="tl-row">
+      <div class="tl-node">
+        <div class="tl-badge" style="background:var(--teal-light);box-shadow:0 0 0 3px rgba(26,110,110,0.25),0 2px 8px rgba(13,31,60,0.08)">🎯</div>
+      </div>
+      <div>
+        <div class="phase-card" style="border-left:4px solid var(--teal)">
+          <div class="phase-header">
+            <div><div class="phase-title">Full Launch — Phase 2</div><div class="phase-date">Later in 2026</div></div>
+            <span class="chip chip-teal" style="font-size:9px">&#128295;&nbsp;Building</span>
+          </div>
+          <div style="background:var(--teal-light);border:1px solid rgba(26,110,110,0.2);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--text2);line-height:1.6">
+            <strong style="color:var(--navy);display:block;margin-bottom:3px">All limits removed. Paid plans introduced.</strong>
+            Full AI features, file history, integrations, accounts, and billing all go live together.
+          </div>
+
+          <div class="sub-label">Security &amp; Billing</div>
+          <ul class="fl" style="margin-bottom:14px">
+            <li><span class="fi">🔐</span><div><strong>Row-level security on data tables</strong><span>Database-enforced policies — every user sees only their own data</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">💳</span><div><strong>Billing &amp; paywall</strong><span>Paid plans with gated feature access</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">📧</span><div><strong>Resend email provider</strong><span>Receipts, alerts, and onboarding emails</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">🛡️</span><div><strong>GDPR / data retention</strong><span>Configurable retention, right-to-delete, DPA ready</span></div><span class="stag tag-planned">Planned</span></li>
+          </ul>
+
+          <button class="phase-toggle open" data-target="fl-product">Product <span class="chevron">▾</span></button>
+          <div class="phase-collapsible open" id="fl-product"><div class="phase-collapsible-inner">
+          <ul class="fl" style="margin:10px 0 0">
+            <li><span class="fi">📜</span><div><strong>File history</strong><span>Load any previous upload straight from your account</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">🎓</span><div><strong>Onboarding flow</strong><span>Guided first-run experience for new users</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">💾</span><div><strong>Save / load rule sets</strong><span>Save your QA config and reuse it across files</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">✏️</span><div><strong>Spell checker whitelist</strong><span>Add your own terms — brand names, acronyms, internal codes</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">🔔</span><div><strong>Email &amp; Slack alerts</strong><span>Get notified when a file drops below your quality threshold</span></div><span class="stag tag-planned">Planned</span></li>
+          </ul>
+          </div></div>
+
+          <button class="phase-toggle" data-target="fl-ai">AI Features <span class="chevron">▾</span></button>
+          <div class="phase-collapsible" id="fl-ai"><div class="phase-collapsible-inner">
+          <ul class="fl" style="margin:10px 0 0">
+            <li><span class="fi">🤖</span><div><strong>AI assistant</strong><span>Ask questions about your data in plain English</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">⚡</span><div><strong>AI-powered rule generation</strong><span>Describe a rule, let AI write it for you</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">🗺️</span><div><strong>Smart export mapping</strong><span>AI suggests column mappings when exporting to a target schema</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">🔧</span><div><strong>Secure server-side AI proxy</strong><span>AI calls routed through the backend — no keys exposed to the browser</span></div><span class="stag tag-planned">Planned</span></li>
+          </ul>
+          </div></div>
+
+          <button class="phase-toggle" data-target="fl-rules">Advanced QA Rules <span class="chevron">▾</span></button>
+          <div class="phase-collapsible" id="fl-rules"><div class="phase-collapsible-inner">
+          <ul class="fl" style="margin:10px 0 0">
+            <li><span class="fi">🔗</span><div><strong>Cross-column validation</strong><span>Rules spanning two+ columns — e.g. if status = closed, date must be set</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">🔀</span><div><strong>Conditional rules</strong><span>Apply a check only when another column meets a condition</span></div><span class="stag tag-planned">Planned</span></li>
+            <li><span class="fi">📮</span><div><strong>Postcode / ZIP by country</strong><span>Validate postal codes against the correct format per country</span></div><span class="stag tag-planned">Planned</span></li>
+          </ul>
+          </div></div>
+
+          <button class="phase-toggle" data-target="fl-integrations">Integrations <span class="chevron">▾</span></button>
+          <div class="phase-collapsible" id="fl-integrations"><div class="phase-collapsible-inner">
+          <ul class="fl" style="margin:10px 0 0">
+            <li><span class="fi">☁️</span><div><strong>Google Drive &amp; Dropbox</strong><span>Open and save files directly from your cloud storage</span></div><span class="stag tag-planned">Planned</span></li>
+          </ul>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WAITLIST -->
+<div class="waitlist-band">
+  <h2>Want to know when we launch?</h2>
+  <p>Drop your email and we'll reach out the moment Open Beta goes live — and again at full launch.</p>
+  <div class="wl-row">
+    <input type="email" class="wl-input" id="rm-email" placeholder="your@email.com"/>
+    <button class="wl-btn" id="rm-btn">Notify me</button>
+  </div>
+  <div class="wl-success" id="rm-success">&#10003;&nbsp; You're on the list — we'll be in touch!</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" style="display:flex;align-items:center;text-decoration:none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none" style="height:30px;width:auto">
+        <rect x="0" y="4" width="56" height="56" rx="12" fill="rgba(255,255,255,0.15)"/>
+        <path d="M28 13 L46 28 L28 43 L10 28 Z" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+        <path d="M28 19 L40 28 L28 37 L16 28 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+        <path d="M20.5 28 L25.5 34 L36.5 21" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="28" cy="13" r="1.8" fill="rgba(255,255,255,0.5)"/><circle cx="46" cy="28" r="1.8" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="28" cy="43" r="1.8" fill="rgba(255,255,255,0.5)"/><circle cx="10" cy="28" r="1.8" fill="rgba(255,255,255,0.5)"/>
+        <text x="68" y="33" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="800" fill="white" letter-spacing="-0.5">Data</text>
+        <text x="131" y="33" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="800" fill="rgba(255,255,255,0.6)" letter-spacing="-0.5">QA</text>
+        <text x="69" y="46" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" font-weight="500" fill="rgba(255,255,255,0.3)" letter-spacing="2">DATA QUALITY · SIMPLIFIED</text>
+      </svg>
+    </a>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+      <a href="roadmap.html" style="color:rgba(255,255,255,0.75)">Roadmap</a>
+    </div>
+    <div class="footer-copy">© 2026 DataQA. Built for data people.</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('rm-btn').addEventListener('click', function() {
+  var email = document.getElementById('rm-email').value.trim();
+  if (!email || !email.includes('@')) return;
+  var btn = this;
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  fetch('https://formspree.io/f/mbdbrgdd', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({email: email, source: 'roadmap-page'})
+  }).then(function() {
+    document.getElementById('rm-success').style.display = 'block';
+    document.getElementById('rm-email').style.display = 'none';
+    btn.style.display = 'none';
+  }).catch(function() {
+    btn.textContent = 'Notify me';
+    btn.disabled = false;
+  });
+});
+document.getElementById('rm-email').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('rm-btn').click();
+});
+
+document.querySelectorAll('.phase-toggle').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var target = document.getElementById(btn.getAttribute('data-target'));
+    btn.classList.toggle('open');
+    target.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
